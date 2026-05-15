@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kampung Rumbia — Desa Berkarakter, Pemuda Berjiwa</title>
+    <meta name="description" content="Website resmi Kampung Rumbia. Mengenal sejarah, budaya, organisasi pemuda dan kegiatan masyarakat Kampung Rumbia." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">🌿</div>
+        <span>Kampung Rumbia</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="organisasi.html">Organisasi</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kegiatan.html">Kegiatan</a>
+        <a href="kontak.html" class="btn-nav">Kontak</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="nav-drawer" id="navDrawer">
+      <a href="index.html">🏠 Beranda</a>
+      <a href="tentang.html">📖 Tentang Kampung</a>
+      <a href="organisasi.html">🤝 Organisasi</a>
+      <a href="galeri.html">📸 Galeri</a>
+      <a href="kegiatan.html">📅 Kegiatan</a>
+      <a href="kontak.html">📞 Kontak</a>
+    </div>
+
+    <!-- ======== HERO ======== -->
+    <section class="hero" id="hero">
+      <div class="hero-video-wrap">
+        <!-- Ganti src dengan video drone kampung -->
+        <!-- <div style="
+      width:100%;height:100%;
+      background: linear-gradient(135deg, #0a2e1a 0%, #1a4d2e 30%, #0d1a11 60%, #060e09 100%);
+      display:flex;align-items:center;justify-content:center;
+      font-size:8rem;
+    ">🌿</div> -->
+        <video autoplay muted loop playsinline>
+          <source src="assets/video/vidi.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <!-- Particle dots decoration -->
+      <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden">
+        <div id="particles"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>Sulawesi Selatan</span>
+        </div>
+        <h1 class="hero-title">Selamat Datang di<br /><em>Kampung Rumbia</em></h1>
+        <p class="hero-subtitle">Tanah subur, jiwa yang kuat — tempat tradisi bertemu semangat pemuda yang berkarakter dan berdedikasi.</p>
+        <div class="hero-actions">
+          <a href="tentang.html" class="btn-primary">✦ Kenali Kampung Kami</a>
+          <a href="galeri.html" class="btn-outline">📸 Lihat Galeri</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Gulir ke bawah</span>
+      </div>
+    </section>
+
+    <!-- ======== STATS BAR ======== -->
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-num" data-target="150">0</div>
+        <div class="stat-label">Pemuda Aktif</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="3">0</div>
+        <div class="stat-label">Organisasi</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="20">0</div>
+        <div class="stat-label">Kegiatan / Tahun</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="500">0</div>
+        <div class="stat-label">Warga Kampung</div>
+      </div>
+    </div>
+
+    <!-- ======== TENTANG PREVIEW ======== -->
+    <section style="padding-top: 120px">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal-left">
+          <!-- <div class="about-img-placeholder">
+        🌄
+        <span style="font-size:1rem;color:rgba(255,255,255,0.3);">Foto Kampung Rumbia</span>
+      </div> -->
+          <img src="assets/img/kampong1.jpg" alt="Kampung Rumbia" class="about-img-main" />
+          <div class="about-badge-float glass">
+            <div class="num">2026</div>
+            <div class="lbl">Tahun Berdirinya Website</div>
+          </div>
+        </div>
+
+        <div class="about-content reveal-right">
+          <div class="section-tag about-tag">Tentang Kampung</div>
+          <h2 class="about-title">Rumbia — <em>Desa yang Tak Pernah Tidur</em></h2>
+          <p class="about-desc">
+            Kampung Rumbia adalah sebuah desa yang kaya budaya dan semangat. Terletak di tanah Sulawesi yang subur, kampung ini telah melahirkan generasi-generasi tangguh yang menjunjung tinggi nilai gotong royong dan kebersamaan.
+          </p>
+
+          <div class="about-quote glass-gold">
+            <blockquote>"Dari Rumbia, kami membawa nama — bukan hanya sebagai warga, tapi sebagai pemuda yang punya jiwa dan karakter."</blockquote>
+          </div>
+
+          <div class="about-info-grid">
+            <div class="info-chip glass">
+              <span class="ic">📍</span>
+              <span>Enrekang, Sulawesi Selatan, Indonesia</span>
+            </div>
+            <div class="info-chip glass">
+              <span class="ic">🕌</span>
+              <span>Mayoritas Muslim</span>
+            </div>
+            <div class="info-chip glass">
+              <span class="ic">🌳</span>
+              <span>Lingkungan Hijau & Asri</span>
+            </div>
+            <div class="info-chip glass">
+              <span class="ic">🤝</span>
+              <span>Semangat Gotong Royong</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px">
+            <a href="tentang.html" class="btn-primary">Selengkapnya →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ORGANISASI PREVIEW ======== -->
+    <section class="org-section">
+      <div class="section-header reveal">
+        <div class="section-tag">Kebanggaan Kampung</div>
+        <h2 class="section-title">Organisasi <em>Pemuda</em></h2>
+        <p class="section-sub">Empat organisasi yang menjadi tulang punggung kegiatan dan identitas pemuda Kampung Rumbia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="org-grid">
+        <div class="org-card glass reveal" style="transition-delay: 0.1s">
+          <div class="org-logo">
+            <img src="assets/logo/ikrar.png" alt="Logo IKRAR" />
+          </div>
+          <div class="org-name">IKRAR</div>
+          <div class="org-full">Ikatan Keluarga dan Remaja Rumbia</div>
+          <p class="org-desc">Organisasi induk pemuda kampung yang menginisiasi berbagai kegiatan sosial, budaya, dan pemberdayaan masyarakat.</p>
+          <div class="org-tags">
+            <span class="org-tag">Sosial</span>
+            <span class="org-tag">Budaya</span>
+            <span class="org-tag">Pemberdayaan</span>
+          </div>
+          <a href="organisasi.html" class="org-social">📸 Lihat Detail →</a>
+        </div>
+
+        <div class="org-card glass reveal" style="transition-delay: 0.2s">
+          <div class="org-logo">
+            <img src="assets/logo/irmir.png" alt="Logo IRMIR" />
+          </div>
+          <div class="org-name">IRMIR</div>
+          <div class="org-full">Ikatan Remaja Masjid Istigfar Rumbia</div>
+          <p class="org-desc">Organisasi kepemudaan berbasis masjid yang aktif dalam kegiatan keagamaan, pengajian, dan dakwah di kampung.</p>
+          <div class="org-tags">
+            <span class="org-tag">Keagamaan</span>
+            <span class="org-tag">Pengajian</span>
+            <span class="org-tag">Dakwah</span>
+          </div>
+          <a href="organisasi.html" class="org-social">📸 Lihat Detail →</a>
+        </div>
+
+        <div class="org-card glass reveal" style="transition-delay: 0.3s">
+          <div class="org-logo">
+            <img src="assets/logo/korpala-ikrar.png" alt="Logo KORPALA" />
+          </div>
+          <div class="org-name">KORPALA IKRAR</div>
+          <div class="org-full">Komunitas Remaja Pecinta Alam IKRAR</div>
+          <p class="org-desc">Organisasi pecinta alam yang aktif dalam kegiatan hiking, camping, dan pelestarian lingkungan alam sekitar kampung.</p>
+          <div class="org-tags">
+            <span class="org-tag">Hiking</span>
+            <span class="org-tag">Camping</span>
+            <span class="org-tag">Lingkungan</span>
+          </div>
+          <a href="organisasi.html" class="org-social">📸 Lihat Detail →</a>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 44px" class="reveal">
+        <a href="organisasi.html" class="btn-outline">Lihat Semua Organisasi →</a>
+      </div>
+    </section>
+
+    <!-- ======== GALERI PREVIEW ======== -->
+    <section>
+      <div class="section-header reveal">
+        <div class="section-tag">Momen Berharga</div>
+        <h2 class="section-title">Galeri <em>Kegiatan</em></h2>
+        <p class="section-sub">Dokumentasi kegiatan masyarakat, pemuda, dan alam Kampung Rumbia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/foto4.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">📿 Pengajian Rutin</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/c10.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">🏔️ Hiking KORPALA</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/ft2.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">🧹 Gotong Royong</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/c9.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">🌙 Buka Puasa Bersama</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/foto3.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">⚽ Turnamen Kampung</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <img src="assets/img/a1.jpeg" alt="Pengajian Rutin" />
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">🎉 Acara Pemuda</span></div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 44px" class="reveal">
+        <a href="galeri.html" class="btn-primary">📸 Lihat Semua Foto</a>
+      </div>
+    </section>
+
+    <!-- ======== JADWAL KEGIATAN ======== -->
+    <section class="schedule-section">
+      <div class="section-header reveal">
+        <div class="section-tag">Agenda Kampung</div>
+        <h2 class="section-title">Jadwal <em>Kegiatan</em></h2>
+        <p class="section-sub">Kegiatan rutin dan acara mendatang di Kampung Rumbia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="schedule-card glass reveal" style="transition-delay: 0.1s">
+          <div class="sched-date">
+            <div class="sched-day">15</div>
+            <div class="sched-month">Jul</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Kerja Bakti Kampung</div>
+            <div class="sched-meta">
+              <span>⏰ 07.00 WITA</span>
+              <span>📍 Lapangan Utama</span>
+            </div>
+            <span class="sched-org">IKRAR</span>
+          </div>
+        </div>
+
+        <div class="schedule-card glass reveal" style="transition-delay: 0.15s">
+          <div class="sched-date">
+            <div class="sched-day">18</div>
+            <div class="sched-month">Jul</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Pengajian Mingguan</div>
+            <div class="sched-meta">
+              <span>⏰ 19.30 WITA</span>
+              <span>📍 Masjid Kampung</span>
+            </div>
+            <span class="sched-org">IRMIR</span>
+          </div>
+        </div>
+
+        <div class="schedule-card glass reveal" style="transition-delay: 0.2s">
+          <div class="sched-date">
+            <div class="sched-day">20</div>
+            <div class="sched-month">Jul</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Camping & Hiking</div>
+            <div class="sched-meta">
+              <span>⏰ 06.00 WITA</span>
+              <span>📍 Bukit Rumbia</span>
+            </div>
+            <span class="sched-org">KORPALA</span>
+          </div>
+        </div>
+
+        <div class="schedule-card glass reveal" style="transition-delay: 0.25s">
+          <div class="sched-date">
+            <div class="sched-day">25</div>
+            <div class="sched-month">Jul</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Rapat Pemuda Bulanan</div>
+            <div class="sched-meta">
+              <span>⏰ 20.00 WITA</span>
+              <span>📍 Sekretariat IKRAR</span>
+            </div>
+            <span class="sched-org">IKRAR</span>
+          </div>
+        </div>
+
+        <div class="schedule-card glass reveal" style="transition-delay: 0.3s">
+          <div class="sched-date">
+            <div class="sched-day">28</div>
+            <div class="sched-month">Jul</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Turnamen Futsal Kampung</div>
+            <div class="sched-meta">
+              <span>⏰ 15.00 WITA</span>
+              <span>📍 Lapangan Futsal</span>
+            </div>
+            <span class="sched-org">IKRAR</span>
+          </div>
+        </div>
+
+        <div class="schedule-card glass reveal" style="transition-delay: 0.35s">
+          <div class="sched-date">
+            <div class="sched-day">01</div>
+            <div class="sched-month">Ags</div>
+          </div>
+          <div class="sched-info">
+            <div class="sched-title">Peringatan HUT RI</div>
+            <div class="sched-meta">
+              <span>⏰ 08.00 WITA</span>
+              <span>📍 Seluruh Kampung</span>
+            </div>
+            <span class="sched-org">Semua Organisasi</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 44px" class="reveal">
+        <a href="kegiatan.html" class="btn-outline">Lihat Jadwal Lengkap →</a>
+      </div>
+    </section>
+
+    <!-- ======== BERITA KAMPUNG ======== -->
+    <section>
+      <div class="section-header reveal">
+        <div class="section-tag">Update Terkini</div>
+        <h2 class="section-title">Berita <em>Kampung</em></h2>
+        <p class="section-sub">Informasi dan kegiatan terbaru dari Kampung Rumbia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="news-grid reveal">
+        <div class="news-featured glass">
+          <div class="news-featured-img">
+            <img src="assets/img/c7.jpeg" alt="Camping KORPALA" />
+          </div>
+          <div class="news-featured-body">
+            <span class="news-tag">KORPALA</span>
+            <h3 class="news-title">KORPALA Sukses Mendaki Pegunungan Latimojong 3478 MDPL, Gunung Tertinggi di Sulawesi</h3>
+            <p class="news-excerpt">
+              Lebih dari 10 pemuda kampung mengikuti kegiatan pendakian yang diselenggarakan KORPALA menuju Pegunungan Latimojong, gunung tertinggi di Sulawesi. Kegiatan berlangsung selama beberapa hari dengan berbagai agenda petualangan,
+              kebersamaan, dan eksplorasi alam.
+            </p>
+            <div class="news-meta">
+              <span>📅 10 Juli 2015</span>
+              <span>👁️ 245 pembaca</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-list">
+          <div class="news-mini glass">
+            <div class="news-mini-thumb">🕌</div>
+            <div>
+              <div class="news-mini-title">Pengajian Ramadan IRMIR Diikuti 80 Jamaah</div>
+              <div class="news-mini-date">📅 5 Juli 2025</div>
+            </div>
+          </div>
+          <div class="news-mini glass">
+            <div class="news-mini-thumb">🧹</div>
+            <div>
+              <div class="news-mini-title">Gotong Royong Bersama Bersihkan Jalan Kampung</div>
+              <div class="news-mini-date">📅 28 Juni 2025</div>
+            </div>
+          </div>
+          <div class="news-mini glass">
+            <div class="news-mini-thumb">⚽</div>
+            <div>
+              <div class="news-mini-title">Bazar Futsal</div>
+              <div class="news-mini-date">📅 20 Juni 2025</div>
+            </div>
+          </div>
+          <div class="news-mini glass">
+            <div class="news-mini-thumb">🌙</div>
+            <div>
+              <div class="news-mini-title">Buka Puasa Bersama Mempererat Silaturahmi Warga</div>
+              <div class="news-mini-date">📅 15 Maret 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TESTIMONI ======== -->
+    <section class="testi-section">
+      <div class="section-header reveal">
+        <div class="section-tag">Suara Warga</div>
+        <h2 class="section-title">Komentar <em>Tentang Kampung</em></h2>
+        <p class="section-sub">Apa kata warga dan pengunjung tentang Kampung Rumbia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card glass reveal" style="transition-delay: 0.1s">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-text">Kampung Rumbia bukan sekadar tempat tinggal — ini adalah rumah yang penuh kenangan, penuh cinta, dan penuh semangat pemuda yang luar biasa.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👨</div>
+            <div>
+              <div class="testi-name">Paddy tadsuyah</div>
+              <div class="testi-role">Warga Kampung</div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card glass reveal" style="transition-delay: 0.2s">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-text">Saya bangga menjadi bagian dari IRMIR Rumbia. Di sini saya belajar arti kebersamaan dan tanggung jawab sebagai pemuda Muslim yang berakhlak.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👦</div>
+            <div>
+              <div class="testi-name">Ahsan kholid</div>
+              <div class="testi-role">Anggota IRMIR</div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card glass reveal" style="transition-delay: 0.3s">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-text">Hiking bersama KORPALA adalah pengalaman tak terlupakan. Alam Rumbia begitu indah — udara segar, pemandangan hijau, dan persaudaraan yang hangat.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👧</div>
+            <div>
+              <div class="testi-name">juminten</div>
+              <div class="testi-role">Anggota KORPALA</div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-add reveal">
+        <a href="kontak.html" class="btn-outline">✍️ Tulis Komentarmu →</a>
+      </div>
+    </section>
+
+    <!-- ======== PETA LOKASI ======== -->
+    <section>
+      <div class="section-header reveal">
+        <div class="section-tag">Lokasi</div>
+        <h2 class="section-title">Temukan <em>Kampung Rumbia</em></h2>
+        <p class="section-sub">Kunjungi kami di Sulawesi Selatan, Indonesia.</p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="map-wrap">
+          <!-- Ganti src dengan koordinat Kampung Rumbia yang sebenarnya -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6725040669335!2d119.86934417351863!3d-3.4296660417224283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d9413d1bc56a777%3A0xe78dd98036eac635!2sLapangan%20Sepak%20Bola%20Rumbia!5e0!3m2!1sen!2sid!4v1778855188498!5m2!1sen!2sid"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="contact-info">
+          <h3 class="contact-title">Hubungi Kami</h3>
+          <p class="contact-desc">Ada pertanyaan atau ingin berkolaborasi? Jangan ragu untuk menghubungi kami melalui berbagai saluran berikut.</p>
+
+          <a href="https://wa.me/628xxxxxxxxx" class="contact-item" target="_blank">
+            <div class="contact-ic ic-green">💬</div>
+            <div>
+              <div class="contact-label">WhatsApp Admin</div>
+              <div class="contact-val">+62 8xx-xxxx-xxxx</div>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/ikrar1966" class="contact-item" target="_blank">
+            <div class="contact-ic ic-pink">📸</div>
+            <div>
+              <div class="contact-label">Instagram IKRAR</div>
+              <div class="contact-val">@ikrar1966</div>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/irmir_01" class="contact-item" target="_blank">
+            <div class="contact-ic ic-pink">📸</div>
+            <div>
+              <div class="contact-label">Instagram IRMIR</div>
+              <div class="contact-val">@irmir_01</div>
+            </div>
+          </a>
+
+          <a href="https://www.tiktok.com/@kampungrumbia" class="contact-item" target="_blank">
+            <div class="contact-ic ic-blue">🎵</div>
+            <div>
+              <div class="contact-label">TikTok Kampung</div>
+              <div class="contact-val">@kampungrumbia</div>
+            </div>
+          </a>
+
+          <a href="https://youtube.com/@kampungrumbia" class="contact-item" target="_blank">
+            <div class="contact-ic ic-red">▶️</div>
+            <div>
+              <div class="contact-label">YouTube</div>
+              <div class="contact-val">Kampung Rumbia Official</div>
+            </div>
+          </a>
+
+          <div style="margin-top: 10px">
+            <a href="kontak.html" class="btn-primary" style="display: inline-flex">📞 Halaman Kontak →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 16px">
+            <div class="brand-icon">🌿</div>
+            <span>Kampung Rumbia</span>
+          </div>
+          <p class="footer-desc">Website resmi Kampung Rumbia — menggabungkan tradisi dan semangat modern untuk memperkenalkan kampung kami kepada dunia.</p>
+          <div class="footer-socials">
+            <a class="footer-social-ic" href="https://instagram.com/ikrar_rumbia" target="_blank" title="Instagram">📸</a>
+            <a class="footer-social-ic" href="https://wa.me/628xxxxxxxxx" target="_blank" title="WhatsApp">💬</a>
+            <a class="footer-social-ic" href="https://www.tiktok.com/@kampungrumbia" target="_blank" title="TikTok">🎵</a>
+            <a class="footer-social-ic" href="https://youtube.com/@kampungrumbia" target="_blank" title="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang Kampung</a></li>
+            <li><a href="organisasi.html">Organisasi</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kegiatan.html">Kegiatan</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Organisasi</h4>
+          <ul>
+            <li><a href="organisasi.html#ikrar">IKRAR</a></li>
+            <li><a href="organisasi.html#irmir">IRMIR</a></li>
+            <li><a href="organisasi.html#korpala">KORPALA</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Media Sosial</h4>
+          <ul>
+            <li><a href="https://instagram.com/ikrar_rumbia" target="_blank">Instagram IKRAR</a></li>
+            <li><a href="https://instagram.com/irmir_rumbia" target="_blank">Instagram IRMIR</a></li>
+            <li><a href="https://instagram.com/korpala_rumbia" target="_blank">Instagram KORPALA</a></li>
+            <li><a href="https://www.tiktok.com/@kampungrumbia" target="_blank">TikTok Kampung</a></li>
+            <li><a href="https://youtube.com/@kampungrumbia" target="_blank">YouTube Channel</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 <span>Kampung Rumbia</span>. Dibuat dengan ❤️ oleh Pemuda Rumbia.</p>
+        <p class="footer-copy">Sulawesi Selatan, Indonesia 🇮🇩</p>
+      </div>
+    </footer>
+
+    <!-- ======== MUSIK PLAYER ======== -->
+    <div class="music-player">
+      <button class="music-btn" id="musicBtn" title="Musik Latar">🎵</button>
+      <audio id="bgMusic" loop>
+        <source src="assets/video/lagu-rumbia.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <!-- ======== DARK MODE TOGGLE ======== -->
+    <button class="theme-toggle" id="themeToggle" title="Ganti Tema">🌙</button>
+
+    <!-- ======== SCRIPTS ======== -->
+    <script>
+      // --- Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 60);
+      });
+
+      // --- Hamburger
+      const hamburger = document.getElementById("hamburger");
+      const navDrawer = document.getElementById("navDrawer");
+      let menuOpen = false;
+      function openMenu() {
+        menuOpen = true;
+        navDrawer.classList.add("open");
+        hamburger.classList.add("open");
+      }
+      function closeMenu() {
+        menuOpen = false;
+        navDrawer.classList.remove("open");
+        hamburger.classList.remove("open");
+      }
+      hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuOpen ? closeMenu() : openMenu();
+      });
+      document.addEventListener("click", (e) => {
+        if (menuOpen && !navDrawer.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+      });
+
+      // Close drawer on link click
+      navDrawer.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", closeMenu);
+      });
+
+      // --- Scroll reveal
+      const reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      reveals.forEach((el) => observer.observe(el));
+
+      // --- Counter animation
+      function animateCount(el, target) {
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const suffix = el.dataset.suffix || "+";
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + suffix;
+          if (current >= target) clearInterval(timer);
+        }, 25);
+      }
+
+      const statNums = document.querySelectorAll(".stat-num[data-target]");
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              animateCount(e.target, parseInt(e.target.dataset.target));
+              statsObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      statNums.forEach((el) => statsObserver.observe(el));
+
+      // --- Music player
+      const musicBtn = document.getElementById("musicBtn");
+      const bgMusic = document.getElementById("bgMusic");
+
+      let playing = false;
+
+      musicBtn.addEventListener("click", () => {
+
+        if (playing) {
+          bgMusic.pause();
+          musicBtn.textContent = "🎵";
+          musicBtn.classList.remove("playing");
+        } else {
+
+          bgMusic.play()
+            .then(() => {
+              musicBtn.textContent = "🔊";
+              musicBtn.classList.add("playing");
+            })
+            .catch((err) => {
+              console.log("Audio gagal diputar:", err);
+            });
+
+        }
+
+        playing = !playing;
+      });
+      </script>
+
+      // --- Dark / Light mode
+      const themeToggle = document.getElementById("themeToggle");
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        themeToggle.textContent = "☀️";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+        const isLight = document.body.classList.contains("light-mode");
+        themeToggle.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+      });
+
+      // --- Particles
+      (function () {
+        const container = document.getElementById("particles");
+        if (!container) return;
+        for (let i = 0; i < 35; i++) {
+          const dot = document.createElement("div");
+          const size = Math.random() * 3 + 1;
+          dot.style.cssText = `
+      position:absolute;
+      width:${size}px; height:${size}px;
+      border-radius:50%;
+      background:rgba(${Math.random() > 0.5 ? "201,168,76" : "111,207,151"},${Math.random() * 0.4 + 0.1});
+      top:${Math.random() * 100}%;
+      left:${Math.random() * 100}%;
+      animation: float ${Math.random() * 6 + 5}s ease-in-out ${Math.random() * 4}s infinite;
+    `;
+          container.appendChild(dot);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri — Kampung Rumbia</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox-content {
+        position: relative;
+        max-width: 860px;
+        width: 100%;
+        text-align: center;
+        animation: fadeUp 0.3s ease;
+      }
+      .lightbox-img {
+        width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: var(--radius);
+        border: 1px solid rgba(201, 168, 76, 0.2);
+      }
+      .lightbox-placeholder {
+        width: 100%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6rem;
+        background: linear-gradient(135deg, var(--green-forest), var(--green-deep));
+        border-radius: var(--radius);
+        border: 1px solid rgba(201, 168, 76, 0.2);
+      }
+      .lightbox-caption {
+        margin-top: 16px;
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .lightbox-sub {
+        font-size: 0.83rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 4px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: -44px;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        color: var(--white);
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      .lightbox-close:hover {
+        background: rgba(201, 168, 76, 0.2);
+        color: var(--gold);
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--white);
+        font-size: 1.1rem;
+        transition: var(--transition);
+      }
+      .lightbox-nav:hover {
+        background: rgba(201, 168, 76, 0.15);
+        border-color: rgba(201, 168, 76, 0.4);
+      }
+      .lightbox-prev {
+        left: -60px;
+      }
+      .lightbox-next {
+        right: -60px;
+      }
+      @media (max-width: 600px) {
+        .lightbox-prev {
+          left: -40px;
+          width: 34px;
+          height: 34px;
+        }
+        .lightbox-next {
+          right: -40px;
+          width: 34px;
+          height: 34px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">🌿</div>
+        <span>Kampung Rumbia</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="organisasi.html">Organisasi</a>
+        <a href="galeri.html" class="active">Galeri</a>
+        <a href="kegiatan.html">Kegiatan</a>
+        <a href="kontak.html" class="btn-nav">Kontak</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="nav-drawer" id="navDrawer">
+      <a href="index.html">🏠 Beranda</a>
+      <a href="tentang.html">📖 Tentang Kampung</a>
+      <a href="organisasi.html">🤝 Organisasi</a>
+      <a href="galeri.html">📸 Galeri</a>
+      <a href="kegiatan.html">📅 Kegiatan</a>
+      <a href="kontak.html">📞 Kontak</a>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-bg" style="background: linear-gradient(135deg, rgba(10, 46, 26, 0.97), rgba(6, 14, 9, 0.99))"></div>
+      <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-end; padding-right: 6%; font-size: 10rem; opacity: 0.05; pointer-events: none">📸</div>
+      <div class="page-header-content">
+        <div class="page-header-tag">Momen Berharga</div>
+        <h1 class="page-header-title">Galeri <em>Kegiatan</em></h1>
+      </div>
+    </div>
+
+    <section style="padding-top: 60px">
+      <!-- Filter -->
+      <div class="gallery-filter reveal">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="pengajian">Pengajian</button>
+        <button class="filter-btn" data-filter="alam">Alam & Hiking</button>
+        <button class="filter-btn" data-filter="sosial">Sosial</button>
+        <button class="filter-btn" data-filter="olahraga">Olahraga</button>
+        <button class="filter-btn" data-filter="ramadan">Ramadan</button>
+        <button class="filter-btn" data-filter="pemuda">Acara Pemuda</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid reveal" id="galleryGrid">
+        <!-- Row 1 -->
+        <div class="gallery-item" data-cat="pengajian" data-title="Pengajian Rutin Malam Jumat" data-org="IRMIR" data-emoji="🕌">
+          <img src="assets/img/ft5.jpeg" alt="Pengajian" />
+          <div class="gallery-overlay"><span class="gallery-caption">📿 Pengajian Rutin</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="alam" data-title="Hiking Perdana KORPALA" data-org="KORPALA" data-emoji="🏔️">
+          <img src="assets/img/c10.jpeg" alt="Hiking" />
+          <div class="gallery-overlay"><span class="gallery-caption">🏔️ Hiking KORPALA</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="sosial" data-title="Gotong Royong Bersih Kampung" data-org="IKRAR" data-emoji="🧹">
+          <img src="assets/img/foto7.jpeg" alt="Gotong Royong" />
+          <div class="gallery-overlay"><span class="gallery-caption">🧹 Gotong Royong</span></div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="gallery-item" data-cat="ramadan" data-title="Buka Puasa Bersama Ramadan" data-org="IRMIR" data-emoji="🌙">
+          <img src="assets/img/ft4.jpeg" alt="Buka Puasa" />
+          <div class="gallery-overlay"><span class="gallery-caption">🌙 Buka Puasa Bersama</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="olahraga" data-title="Turnamen sepak bola Antar Kampung" data-org="IKRAR" data-emoji="⚽">
+          <img src="assets/img/a5.jpeg" alt="Turnamen sepak bola" />
+          <div class="gallery-overlay"><span class="gallery-caption">⚽ Turnamen sepak bola</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="pemuda" data-title="Acara Malam Pemuda Rumbia" data-org="IKRAR" data-emoji="🎉">
+          <img src="assets/img/kampong9.jpeg" alt="Acara Pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption">🎉 Acara Pemuda</span></div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="gallery-item" data-cat="ramadan" data-title="Camping di Bukit Rumbia" data-org="KORPALA" data-emoji="⛺">
+          <img src="assets/img/b3.jpeg" alt="Bazar ramadan" />
+          <div class="gallery-overlay"><span class="gallery-caption">Bazar</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="sosial" data-title="Rapat Pemuda Bulanan" data-org="IKRAR" data-emoji="📋">
+          <img src="assets/img/c8.jpeg" alt="Rapat Pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption">📋 Rapat Pemuda</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="alam" data-title="Hiking Perdana KORPALA" data-org="KORPALA" data-emoji="🏔️">
+          <img src="assets/img/c7.jpeg" alt="Hiking" />
+          <div class="gallery-overlay"><span class="gallery-caption">🏔️</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Lomba Islami Ramadan" data-org="IRMIR" data-emoji="🏆">
+          <img src="assets/img/a6.jpeg" alt="bukber pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption">bukber pemuda</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Lomba Islami Ramadan" data-org="IRMIR" data-emoji="🏆">
+          <img src="assets/img/ft6.jpeg" alt="bukber pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="gallery-item" data-cat="olahraga" data-title="Senam Pagi Bersama Warga" data-org="IKRAR" data-emoji="🤸">
+          <img src="assets/img/foto3.jpeg" alt="Senam Pagi" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Lomba Islami Ramadan" data-org="IRMIR" data-emoji="🏆">
+          <img src="assets/img/ft3.jpeg" alt="bukber pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="olahraga" data-title="Senam Pagi Bersama Warga" data-org="IKRAR" data-emoji="🤸">
+          <img src="assets/img/foto6.jpeg" alt="Senam Pagi" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Lomba Islami Ramadan" data-org="IRMIR" data-emoji="🏆">
+          <img src="assets/img/b2.jpeg" alt="bukber pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="pengajian" data-title="Isra Miraj Kampung Rumbia" data-org="IRMIR" data-emoji="🌟">
+          <img src="assets/img/foto4.jpeg" alt="bukber pemuda" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="pemuda" data-title="HUT RI Kampung Rumbia" data-org="Semua" data-emoji="🇮🇩">
+          <img src="assets/img/foto5.jpeg" alt="" />
+          <div class="gallery-overlay"><span class="gallery-caption">🇮🇩</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="alam" data-title="Turnamen sepak bola Antar Kampung" data-org="IKRAR" data-emoji="⚽">
+          <img src="assets/img/kampong2.jpg" alt="Turnamen sepak bola" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="alam" data-title="Turnamen sepak bola Antar Kampung" data-org="IKRAR" data-emoji="⚽">
+          <img src="assets/img/kampong8.jpeg" alt="Turnamen sepak bola" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Turnamen sepak bola Antar Kampung" data-org="IKRAR" data-emoji="⚽">
+          <img src="assets/img/kampong4.jpeg" alt="Turnamen sepak bola" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="ramadan" data-title="Turnamen sepak bola Antar Kampung" data-org="IKRAR" data-emoji="⚽">
+          <img src="assets/img/c2.jpeg" alt="Turnamen sepak bola" />
+          <div class="gallery-overlay"><span class="gallery-caption"></span></div>
+        </div>
+      </div>
+
+      <!-- Dokumentasi Video -->
+      <div style="margin-top: 80px">
+        <div class="section-header reveal">
+          <div class="section-tag">Dokumentasi</div>
+          <h2 class="section-title">Video <em>Kegiatan</em></h2>
+          <p class="section-sub">Saksikan momen-momen terbaik Kampung Rumbia dalam bentuk video.</p>
+          <div class="divider-gold"></div>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-card reveal" style="transition-delay: 0.1s">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/GPT9KmWxjwk" title="Video KORPALA" allowfullscreen> </iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Lagu Kampong Rumbia</div>
+              <div class="video-meta">Ancha Rumbia</div>
+            </div>
+          </div>
+
+          <div class="video-card reveal" style="transition-delay: 0.2s">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/699C6ynLjxs" title="Video Kampung Rumbia" allowfullscreen> </iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Suasana Kampung Rumbia & Kegiatan Pemuda</div>
+              <div class="video-meta">📅 2015 · 🎬 Kampung Rumbia</div>
+            </div>
+          </div>
+
+          <div class="video-card reveal" style="transition-delay: 0.3s">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/Sv7MLw6Pc3I" title="Video Kegiatan Kampung Rumbia" allowfullscreen> </iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Dokumentasi Kegiatan & Kebersamaan Pemuda Rumbia</div>
+              <div class="video-meta">📅 2014 · 🎬 Kampung Rumbia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLight(-1)">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLight(1)">›</button>
+        <div class="lightbox-placeholder" id="lightboxEmoji">🕌</div>
+        <div class="lightbox-caption" id="lightboxCaption">Judul Foto</div>
+        <div class="lightbox-sub" id="lightboxSub">Organisasi</div>
+      </div>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <footer class="footer">
+      <div class="footer-bottom" style="padding-top: 0; border-top: none">
+        <p class="footer-copy">© 2025 <span>Kampung Rumbia</span>. Semua Hak Dilindungi.</p>
+        <div style="display: flex; gap: 16px">
+          <a href="index.html" style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.3)">Beranda</a>
+          <a href="organisasi.html" style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.3)">Organisasi</a>
+          <a href="kontak.html" style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.3)">Kontak</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 60));
+      const hamburger = document.getElementById("hamburger"),
+        navDrawer = document.getElementById("navDrawer");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        navDrawer.classList.toggle("open");
+      });
+      navDrawer.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          navDrawer.classList.remove("open");
+        }),
+      );
+
+      // Reveals
+      const reveals = document.querySelectorAll(".reveal,.reveal-left,.reveal-right");
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.1 },
+      );
+      reveals.forEach((el) => obs.observe(el));
+
+      // Theme
+      const themeToggle = document.getElementById("themeToggle");
+      if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-mode");
+        themeToggle.textContent = "☀️";
+      }
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+        const l = document.body.classList.contains("light-mode");
+        themeToggle.textContent = l ? "☀️" : "🌙";
+        localStorage.setItem("theme", l ? "light" : "dark");
+      });
+
+      // Filter
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.dataset.filter;
+          galleryItems.forEach((item) => {
+            const show = filter === "all" || item.dataset.cat === filter;
+            item.style.display = show ? "" : "none";
+            item.style.opacity = show ? "1" : "0";
+          });
+        });
+      });
+
+      // Lightbox
+      let currentIdx = 0;
+      let visibleItems = [];
+
+      function getVisible() {
+        return Array.from(galleryItems).filter((el) => el.style.display !== "none");
+      }
+
+      galleryItems.forEach((item, i) => {
+        item.addEventListener("click", () => {
+          visibleItems = getVisible();
+          currentIdx = visibleItems.indexOf(item);
+          showLightbox(visibleItems[currentIdx]);
+        });
+      });
+
+      function showLightbox(item) {
+        document.getElementById("lightboxEmoji").textContent = item.dataset.emoji || "📷";
+        document.getElementById("lightboxCaption").textContent = item.dataset.title || "";
+        document.getElementById("lightboxSub").textContent = item.dataset.org || "";
+        document.getElementById("lightbox").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox(e) {
+        if (!e || e.target === document.getElementById("lightbox")) {
+          document.getElementById("lightbox").classList.remove("open");
+          document.body.style.overflow = "";
+        }
+      }
+
+      function navigateLight(dir) {
+        visibleItems = getVisible();
+        currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+        showLightbox(visibleItems[currentIdx]);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") navigateLight(-1);
+        if (e.key === "ArrowRight") navigateLight(1);
+      });
+
+      function openVideo(btn, videoId) {
+        // Replace with actual YouTube embed
+        alert("Video akan ditampilkan di sini.\nGanti VIDEO_ID dengan ID YouTube sebenarnya di kode HTML.");
+      }
+    </script>
+  </body>
+</html>

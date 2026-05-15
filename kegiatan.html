@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kegiatan — Kampung Rumbia</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 0 0 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -32px; top: 16px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--black);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .timeline-dot.upcoming {
+      background: var(--green-leaf);
+      box-shadow: 0 0 0 2px var(--green-leaf);
+    }
+    .timeline-card {
+      padding: 22px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .timeline-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .tl-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tl-title {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--white);
+    }
+    .tl-date {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tl-meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .tl-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+    .tl-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .badge-done { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+    .badge-upcoming { background: rgba(45,122,79,0.15); color: var(--green-glow); border: 1px solid rgba(111,207,151,0.3); }
+
+    /* Berita Grid */
+    .news-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .news-full-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: var(--transition);
+      background: var(--green-deep);
+    }
+    .news-full-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .nf-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, var(--green-forest), var(--green-deep));
+    }
+    .nf-body { padding: 20px; }
+    .nf-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.4; }
+    .nf-excerpt { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 14px; }
+    .nf-meta { font-size: 0.72rem; color: rgba(255,255,255,0.3); display: flex; gap: 14px; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <div class="brand-icon">🌿</div>
+    <span>Kampung Rumbia</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Beranda</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="organisasi.html">Organisasi</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="kegiatan.html" class="active">Kegiatan</a>
+    <a href="kontak.html" class="btn-nav">Kontak</a>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">🏠 Beranda</a>
+  <a href="tentang.html">📖 Tentang Kampung</a>
+  <a href="organisasi.html">🤝 Organisasi</a>
+  <a href="galeri.html">📸 Galeri</a>
+  <a href="kegiatan.html">📅 Kegiatan</a>
+  <a href="kontak.html">📞 Kontak</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-bg" style="background:linear-gradient(135deg,rgba(10,46,26,0.97),rgba(6,14,9,0.99))"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding-right:6%;font-size:10rem;opacity:0.05;pointer-events:none">📅</div>
+  <div class="page-header-content">
+    <div class="page-header-tag">Agenda & Berita</div>
+    <h1 class="page-header-title">Kegiatan <em>Kampung Rumbia</em></h1>
+  </div>
+</div>
+
+<!-- JADWAL CARDS -->
+<section style="padding-top:80px;">
+  <div class="section-header reveal">
+    <div class="section-tag">Agenda Mendatang</div>
+    <h2 class="section-title">Jadwal <em>Kegiatan</em></h2>
+    <p class="section-sub">Kegiatan rutin dan acara mendatang dari seluruh organisasi Kampung Rumbia.</p>
+    <div class="divider-gold"></div>
+  </div>
+
+  <div class="schedule-grid" style="max-width:1100px;margin:0 auto;">
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.05s">
+      <div class="sched-date"><div class="sched-day">15</div><div class="sched-month">Jul</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Kerja Bakti Kampung</div>
+        <div class="sched-meta"><span>⏰ 07.00 WITA</span><span>📍 Lapangan Utama</span></div>
+        <span class="sched-org">IKRAR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.1s">
+      <div class="sched-date"><div class="sched-day">18</div><div class="sched-month">Jul</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Pengajian Mingguan</div>
+        <div class="sched-meta"><span>⏰ 19.30 WITA</span><span>📍 Masjid Kampung</span></div>
+        <span class="sched-org">IRMIR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.15s">
+      <div class="sched-date"><div class="sched-day">20</div><div class="sched-month">Jul</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Camping & Hiking</div>
+        <div class="sched-meta"><span>⏰ 06.00 WITA</span><span>📍 Bukit Rumbia</span></div>
+        <span class="sched-org">KORPALA</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.2s">
+      <div class="sched-date"><div class="sched-day">25</div><div class="sched-month">Jul</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Rapat Pemuda Bulanan</div>
+        <div class="sched-meta"><span>⏰ 20.00 WITA</span><span>📍 Sekretariat</span></div>
+        <span class="sched-org">IKRAR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.25s">
+      <div class="sched-date"><div class="sched-day">28</div><div class="sched-month">Jul</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Turnamen Futsal Kampung</div>
+        <div class="sched-meta"><span>⏰ 15.00 WITA</span><span>📍 Lapangan Futsal</span></div>
+        <span class="sched-org">IKRAR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.3s">
+      <div class="sched-date"><div class="sched-day">01</div><div class="sched-month">Ags</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Peringatan HUT RI ke-80</div>
+        <div class="sched-meta"><span>⏰ 08.00 WITA</span><span>📍 Seluruh Kampung</span></div>
+        <span class="sched-org">Semua Organisasi</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.35s">
+      <div class="sched-date"><div class="sched-day">10</div><div class="sched-month">Ags</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Lomba Antar RT — Olahraga</div>
+        <div class="sched-meta"><span>⏰ 08.00 WITA</span><span>📍 Lapangan Utama</span></div>
+        <span class="sched-org">IKRAR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.4s">
+      <div class="sched-date"><div class="sched-day">15</div><div class="sched-month">Ags</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Pengajian Akbar</div>
+        <div class="sched-meta"><span>⏰ 19.00 WITA</span><span>📍 Masjid Besar</span></div>
+        <span class="sched-org">IRMIR</span>
+      </div>
+    </div>
+
+    <div class="schedule-card glass reveal" style="transition-delay:0.45s">
+      <div class="sched-date"><div class="sched-day">22</div><div class="sched-month">Ags</div></div>
+      <div class="sched-info">
+        <div class="sched-title">Eksplorasi Alam KORPALA</div>
+        <div class="sched-meta"><span>⏰ 05.00 WITA</span><span>📍 Hutan Rumbia</span></div>
+        <span class="sched-org">KORPALA</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section style="background:linear-gradient(180deg,transparent,rgba(26,77,46,0.08) 50%,transparent);">
+  <div class="section-header reveal">
+    <div class="section-tag">Jejak Kegiatan</div>
+    <h2 class="section-title">Timeline <em>Tahun 2025</em></h2>
+    <p class="section-sub">Catatan perjalanan kegiatan Kampung Rumbia sepanjang tahun.</p>
+    <div class="divider-gold"></div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card glass">
+        <div class="tl-header">
+          <div class="tl-title">🌙 Buka Puasa Bersama Ramadan</div>
+          <div class="tl-date">Maret 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Masjid Kampung</span><span>👥 80+ Jamaah</span></div>
+        <div class="tl-desc">Silaturahmi hangat warga kampung dan jamaah masjid dalam suasana Ramadan yang penuh berkah.</div>
+        <span class="tl-badge badge-done" style="margin-top:10px;display:inline-block;">✓ Selesai</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card glass">
+        <div class="tl-header">
+          <div class="tl-title">⚽ Turnamen Futsal Antar Desa</div>
+          <div class="tl-date">Juni 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Lapangan Futsal</span><span>🏆 Kampung Rumbia Juara</span></div>
+        <div class="tl-desc">Tim futsal Kampung Rumbia berhasil meraih juara dalam turnamen antar desa yang diikuti 8 tim.</div>
+        <span class="tl-badge badge-done" style="margin-top:10px;display:inline-block;">✓ Selesai</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card glass">
+        <div class="tl-header">
+          <div class="tl-title">🧹 Gotong Royong Kampung</div>
+          <div class="tl-date">28 Juni 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Seluruh Kampung</span><span>👥 60+ Warga</span></div>
+        <div class="tl-desc">Kegiatan bersih-bersih lingkungan kampung secara serentak yang melibatkan seluruh lapisan warga.</div>
+        <span class="tl-badge badge-done" style="margin-top:10px;display:inline-block;">✓ Selesai</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card glass">
+        <div class="tl-header">
+          <div class="tl-title">🏔️ Camping & Hiking Perdana KORPALA</div>
+          <div class="tl-date">10 Juli 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Bukit Rumbia</span><span>👥 30+ Anggota</span></div>
+        <div class="tl-desc">Kegiatan pertama KORPALA — dua hari penuh petualangan di alam terbuka Bukit Rumbia yang indah.</div>
+        <span class="tl-badge badge-done" style="margin-top:10px;display:inline-block;">✓ Selesai</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot upcoming"></div>
+      <div class="timeline-card glass" style="border-color:rgba(111,207,151,0.25);">
+        <div class="tl-header">
+          <div class="tl-title">🇮🇩 Peringatan HUT RI ke-80</div>
+          <div class="tl-date">1 Agustus 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Seluruh Kampung</span><span>👥 Semua Warga</span></div>
+        <div class="tl-desc">Perayaan kemerdekaan Indonesia dengan berbagai lomba, upacara, dan pertunjukan seni pemuda kampung.</div>
+        <span class="tl-badge badge-upcoming" style="margin-top:10px;display:inline-block;">⏳ Mendatang</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot upcoming"></div>
+      <div class="timeline-card glass" style="border-color:rgba(111,207,151,0.25);">
+        <div class="tl-header">
+          <div class="tl-title">🌿 Eksplorasi Alam KORPALA</div>
+          <div class="tl-date">22 Agustus 2025</div>
+        </div>
+        <div class="tl-meta"><span>📍 Hutan Rumbia</span><span>👥 KORPALA</span></div>
+        <div class="tl-desc">Eksplorasi dan dokumentasi flora fauna di kawasan hutan sekitar Kampung Rumbia.</div>
+        <span class="tl-badge badge-upcoming" style="margin-top:10px;display:inline-block;">⏳ Mendatang</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BERITA LENGKAP -->
+<section>
+  <div class="section-header reveal">
+    <div class="section-tag">Berita Kampung</div>
+    <h2 class="section-title">Informasi <em>Terkini</em></h2>
+    <p class="section-sub">Update terbaru kegiatan dan pengumuman dari Kampung Rumbia.</p>
+    <div class="divider-gold"></div>
+  </div>
+
+  <div class="news-full-grid">
+
+    <div class="news-full-card reveal" style="transition-delay:0.1s">
+      <div class="nf-thumb">🏕️</div>
+      <div class="nf-body">
+        <span class="news-tag">KORPALA</span>
+        <h3 class="nf-title">KORPALA Sukses Gelar Camping Perdana di Bukit Rumbia</h3>
+        <p class="nf-excerpt">Lebih dari 30 pemuda kampung mengikuti kegiatan camping dan hiking yang diselenggarakan KORPALA. Kegiatan berlangsung selama dua hari penuh.</p>
+        <div class="nf-meta"><span>📅 10 Juli 2025</span><span>👁️ 245 pembaca</span></div>
+      </div>
+    </div>
+
+    <div class="news-full-card reveal" style="transition-delay:0.15s">
+      <div class="nf-thumb">🕌</div>
+      <div class="nf-body">
+        <span class="news-tag">IRMIR</span>
+        <h3 class="nf-title">Pengajian Ramadan IRMIR Dihadiri 80 Jamaah</h3>
+        <p class="nf-excerpt">Kegiatan pengajian dan buka puasa bersama menjadi sarana silaturahmi warga kampung yang sangat meriah dan berkesan.</p>
+        <div class="nf-meta"><span>📅 5 Juli 2025</span><span>👁️ 180 pembaca</span></div>
+      </div>
+    </div>
+
+    <div class="news-full-card reveal" style="transition-delay:0.2s">
+      <div class="nf-thumb">⚽</div>
+      <div class="nf-body">
+        <span class="news-tag">IKRAR</span>
+        <h3 class="nf-title">Tim Futsal Rumbia Juara Turnamen Antar Desa</h3>
+        <p class="nf-excerpt">Mengalahkan 7 tim lainnya, tim futsal Kampung Rumbia berhasil membawa pulang trofi juara pertama yang membanggakan.</p>
+        <div class="nf-meta"><span>📅 20 Juni 2025</span><span>👁️ 320 pembaca</span></div>
+      </div>
+    </div>
+
+    <div class="news-full-card reveal" style="transition-delay:0.25s">
+      <div class="nf-thumb">🧹</div>
+      <div class="nf-body">
+        <span class="news-tag">IKRAR</span>
+        <h3 class="nf-title">Gotong Royong Serentak Bersihkan Kampung</h3>
+        <p class="nf-excerpt">Ratusan warga turun tangan membersihkan jalan, selokan, dan fasilitas umum kampung dalam semangat kebersamaan.</p>
+        <div class="nf-meta"><span>📅 28 Juni 2025</span><span>👁️ 210 pembaca</span></div>
+      </div>
+    </div>
+
+    <div class="news-full-card reveal" style="transition-delay:0.3s">
+      <div class="nf-thumb">🌙</div>
+      <div class="nf-body">
+        <span class="news-tag">IRMIR</span>
+        <h3 class="nf-title">Buka Puasa Bersama Pererat Hubungan Warga</h3>
+        <p class="nf-excerpt">Acara buka puasa bersama yang diadakan IRMIR menjadi ajang mempererat tali silaturahmi antar warga kampung.</p>
+        <div class="nf-meta"><span>📅 15 Maret 2025</span><span>👁️ 156 pembaca</span></div>
+      </div>
+    </div>
+
+    <div class="news-full-card reveal" style="transition-delay:0.35s">
+      <div class="nf-thumb">🏆</div>
+      <div class="nf-body">
+        <span class="news-tag">IKRAR</span>
+        <h3 class="nf-title">Lomba 17 Agustus: Kampung Rumbia Meriahkan HUT RI</h3>
+        <p class="nf-excerpt">Berbagai lomba tradisional dan modern digelar untuk memeriahkan HUT Kemerdekaan RI dengan penuh semangat dan kegembiraan.</p>
+        <div class="nf-meta"><span>📅 17 Agustus 2024</span><span>👁️ 430 pembaca</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<button class="theme-toggle" id="themeToggle">🌙</button>
+
+<footer class="footer">
+  <div class="footer-bottom" style="padding-top:0;border-top:none;">
+    <p class="footer-copy">© 2025 <span>Kampung Rumbia</span>. Semua Hak Dilindungi.</p>
+    <div style="display:flex;gap:16px;">
+      <a href="index.html" style="font-size:0.8rem;color:rgba(255,255,255,0.3);">Beranda</a>
+      <a href="galeri.html" style="font-size:0.8rem;color:rgba(255,255,255,0.3);">Galeri</a>
+      <a href="kontak.html" style="font-size:0.8rem;color:rgba(255,255,255,0.3);">Kontak</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
+const hamburger=document.getElementById('hamburger'),navDrawer=document.getElementById('navDrawer');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');navDrawer.classList.toggle('open');});
+navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');navDrawer.classList.remove('open');}));
+const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+reveals.forEach(el=>obs.observe(el));
+const themeToggle=document.getElementById('themeToggle');
+if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');themeToggle.textContent='☀️';}
+themeToggle.addEventListener('click',()=>{document.body.classList.toggle('light-mode');const l=document.body.classList.contains('light-mode');themeToggle.textContent=l?'☀️':'🌙';localStorage.setItem('theme',l?'light':'dark');});
+</script>
+</body>
+</html>
