@@ -152,7 +152,7 @@
       <div class="section-header reveal">
         <div class="section-tag">Kebanggaan Kampung</div>
         <h2 class="section-title">Organisasi <em>Pemuda</em></h2>
-        <p class="section-sub">Empat organisasi yang menjadi tulang punggung kegiatan dan identitas pemuda Kampung Rumbia.</p>
+        <p class="section-sub">Tiga organisasi yang menjadi tulang punggung kegiatan dan identitas pemuda Kampung Rumbia.</p>
         <div class="divider-gold"></div>
       </div>
 
@@ -706,14 +706,13 @@
       let playing = false;
 
       musicBtn.addEventListener("click", () => {
-
         if (playing) {
           bgMusic.pause();
           musicBtn.textContent = "🎵";
           musicBtn.classList.remove("playing");
         } else {
-
-          bgMusic.play()
+          bgMusic
+            .play()
             .then(() => {
               musicBtn.textContent = "🔊";
               musicBtn.classList.add("playing");
@@ -721,7 +720,6 @@
             .catch((err) => {
               console.log("Audio gagal diputar:", err);
             });
-
         }
 
         playing = !playing;
